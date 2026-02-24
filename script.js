@@ -1,6 +1,11 @@
 import { animate } from "motion";
 
-const images = ["https://picsum.photos/v2/list"];
+// List of images (replace with as many as you want)
+const images = [
+  "https://picsum.photos/400/300?random=1",
+  "https://picsum.photos/400/300?random=2",
+  "https://picsum.photos/400/300?random=3",
+];
 
 let currentIndex = 0;
 
@@ -8,6 +13,7 @@ const img = document.getElementById("image");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 
+// Button hover animations
 document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("mouseenter", () => {
     animate(button, { scale: 1.1 }, { duration: 0.2 });
@@ -18,6 +24,7 @@ document.querySelectorAll("button").forEach((button) => {
   });
 });
 
+// Show image with sliding animation
 function showImage(direction) {
   animate(
     img,
@@ -34,6 +41,7 @@ function showImage(direction) {
   });
 }
 
+// Button click events
 nextBtn.addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % images.length;
   showImage("next");
@@ -43,3 +51,6 @@ prevBtn.addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   showImage("prev");
 });
+
+// Initialize first image
+img.src = images[currentIndex];
