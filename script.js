@@ -6,7 +6,6 @@ const images = [
   "https://picsum.photos/400/300?random=2",
   "https://picsum.photos/400/300?random=3",
 ];
-const images = ["https://picsum.photos/v2/list"];
 
 let currentIndex = 0;
 
@@ -19,7 +18,6 @@ document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("mouseenter", () => {
     animate(button, { scale: 1.1 }, { duration: 0.2 });
   });
-
   button.addEventListener("mouseleave", () => {
     animate(button, { scale: 1 }, { duration: 0.2 });
   });
@@ -33,7 +31,6 @@ function showImage(direction) {
     { duration: 0.3 },
   ).finished.then(() => {
     img.src = images[currentIndex];
-
     animate(
       img,
       { opacity: [0, 1], x: [direction === "next" ? 100 : -100, 0] },
