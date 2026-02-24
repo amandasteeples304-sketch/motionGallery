@@ -6,6 +6,7 @@ const images = [
   "https://picsum.photos/400/300?random=2",
   "https://picsum.photos/400/300?random=3",
 ];
+const images = ["https://picsum.photos/v2/list"];
 
 let currentIndex = 0;
 
