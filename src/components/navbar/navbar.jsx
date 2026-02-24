@@ -13,11 +13,11 @@ const Navbar = ({ onFilter }) => {
           key={item}
           onClick={() => {
             setActive(item);
-            onFilter(item); // Callback to filter gallery images
+            onFilter(item);
           }}
           style={{
             ...styles.navItem,
-            color: active === item ? "#ffd700" : "#ffffff", // active accent vs normal
+            color: active === item ? "#ffd700" : "#ffffff",
           }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -41,23 +41,23 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     gap: "2rem",
-    padding: "1rem",
-    position: "relative",
-    backgroundColor: "rgba(0,0,0,0.6)", // semi-transparent dark background
-    borderBottom: "1px solid rgba(255,255,255,0.3)", // subtle border
-    backdropFilter: "blur(5px)", // optional: nice frosted effect over images
+    padding: "1rem 2rem",
+    backgroundColor: "#ff6347",
+    borderBottom: "2px solid #e5533d",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    textTransform: "uppercase",
   },
   navItem: {
     position: "relative",
     cursor: "pointer",
     fontSize: "1.2rem",
-    fontWeight: 500,
+    fontWeight: 600,
   },
   underline: {
     position: "absolute",
     height: "2px",
     width: "100%",
-    background: "#4169e1", // bright accent color
+    background: "#ffd700",
     bottom: "-4px",
     left: 0,
     borderRadius: "2px",

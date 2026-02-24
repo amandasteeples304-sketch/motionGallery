@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar.jsx";
 
 const images = [
   "https://picsum.photos/400/300?random=1",
@@ -18,8 +18,9 @@ const App = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <Navbar onFilter={() => {}} /> {/* Add filter logic if needed */}
-      <div className="gallery-container" style={{ marginTop: "2rem" }}>
+      <Navbar onFilter={() => {}} />
+
+      <div style={{ marginTop: "2rem" }}>
         <AnimatePresence mode="wait">
           <motion.img
             key={images[index]}
@@ -52,7 +53,7 @@ const buttonStyle = {
   cursor: "pointer",
   borderRadius: "5px",
   border: "none",
-  backgroundColor: "#ff6347",
+  backgroundColor: "#ff6347", // matches coral navbar
   color: "#fff",
 };
 

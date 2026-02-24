@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/motionGallery/",
+  base: "/motionGallery/", // MUST match your GitHub repo name
 });
