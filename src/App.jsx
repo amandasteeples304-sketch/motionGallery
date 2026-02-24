@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Navbar from "./Navbar";
 
-function App() {
-  const [count, setCount] = useState(0)
+const images = [
+  "https://picsum.photos/400/300?random=1",
+  "https://picsum.photos/400/300?random=2",
+  "https://picsum.photos/400/300?random=3",
+  "https://picsum.photos/400/300?random=4",
+];
+
+const App = () => {
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((prev) => (prev + 1) % images.length);
+  const previous = () =>
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div style={{ textAlign: "center" }}>
+      <Navbar onFilter={() => {}} /> {/* Add filter logic if needed */}
+      <div className="gallery-container" style={{ marginTop: "2rem" }}>
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={images[index]}
+            src={images[index]}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5 }}
+            style={{ width: "400px", height: "300px", borderRadius: "8px" }}
+          />
+        </AnimatePresence>
 
-export default App
+        <div style={{ marginTop: "1rem" }}>
+          <button onClick={previous} style={buttonStyle}>
+            ⬅ Previous
+          </button>
+          <button onClick={next} style={buttonStyle}>
+            Next ➡
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const buttonStyle = {
+  margin: "0 0.5rem",
+  padding: "0.5rem 1rem",
+  fontSize: "1rem",
+  cursor: "pointer",
+  borderRadius: "5px",
+  border: "none",
+  backgroundColor: "#ff6347",
+  color: "#fff",
+};
+
+export default App;
