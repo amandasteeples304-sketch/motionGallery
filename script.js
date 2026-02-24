@@ -1,6 +1,6 @@
 import { animate } from "motion";
 
-const images = ["https://picsum.photos/"];
+const images = ["https://picsum.photos/v2/list"];
 
 let currentIndex = 0;
 
