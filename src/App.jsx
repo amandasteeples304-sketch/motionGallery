@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { AnimatePresence, motion } from "motion/react";
 
-function App() {
+
+export default function App() {
   const [images, setImages] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,7 +61,19 @@ function App() {
         {images.map((image, index) => {
           return (
             <div key={index} onClick={() => handleThumbnailClick(index)}>
-              <img className="image" src={image.download_url} />
+              <motion.img
+                className="image"
+                src={image.download_url}
+                initial={{ scale: 1 }}
+                whileHover={{
+                  scale: [null, 1.1, 1.3],
+                  transition: {
+                    duration: 0.5,
+                    times: [0, 0.6, 1],
+                  },
+                }}
+                whileTap={{ scale: 0.95 }}
+              />
             </div>
           );
         })}
@@ -116,5 +129,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
