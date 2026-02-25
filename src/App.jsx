@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { motion } from "motion/react";
 
 export default function App() {
   const [images, setImages] = useState([]);
