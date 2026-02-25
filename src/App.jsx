@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import { AnimatePresence, motion } from "motion/react";
+
 
 export default function App() {
   const [images, setImages] = useState([]);
@@ -76,13 +78,45 @@ export default function App() {
           );
         })}
       </div>
-      <div className="bigImages">
+      <div className="bigImages"
+      style= {{
+        width: "100vw",
+        height: "80vh",
+        margin: "0 auto",
+        position: "absolute",
+        overflow: "hidden"
+      }}
+      >
+        <AnimatePresence>
         {images.length > 0 ? (
-          <img src={images[currentIndex].download_url} />
+          <motion.img 
+          key = {currentIndex}
+          initial = {{opacity: 0, scale: 0}}
+          animate = {{opacity: 1, scale: 1}}
+          exit = {{opacity: 0, scale: 0}}
+          transition = {{
+            duration: 0.5,
+            scale: {type: "spring", visualDuration: 0.4, bounce: 0.5}
+          }}
+          style={{
+            width: "100%",
+            height:"100%",
+            objectFit: "cover",
+            position: "absolute",
+            top: "0",
+            left: "0"
+          }}
+          src={images[currentIndex].download_url} />
         ) : (
           ""
         )}
-        <div style={{ marginTop: "1rem" }}>
+        <div style={{ 
+          marginTop: "1rem",
+          zIndex: "10",
+          display: "flex",
+          justifyContent:"space-between",
+          width:"100%"
+        }}>
           <button onClick={previousIndex} style={buttonStyle}>
             ⬅ Previous
           </button>
@@ -90,6 +124,7 @@ export default function App() {
             Next ➡
           </button>
         </div>
+        </AnimatePresence>
       </div>
     </div>
   );
